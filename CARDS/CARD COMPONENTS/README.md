@@ -4,7 +4,7 @@ This project contains various card components designed using Tailwind CSS and Bo
 
 ## Preview
 
-![Card Components](screenshot.png)
+![Card Components](screenshot.jpg)
 
 ## Getting Started
 
