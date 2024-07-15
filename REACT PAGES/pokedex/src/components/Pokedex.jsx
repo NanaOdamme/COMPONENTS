@@ -9,7 +9,7 @@ const Pokedex = () => {
   const [carouselIndex, setCarouselIndex] = useState(0);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   
-  const limit = 20; // Number of Pokémon per page
+  const limit = 16;
 
   const fetchPokemon = async (page = 1, query = "") => {
     setLoading(true);
@@ -123,17 +123,17 @@ const Pokedex = () => {
         </div>
       </section>
       <div className="p-5">
-        <h1 className="text-white text-5xl font-bold text-center mb-8 text-stroke">Pokedex</h1>
-        <div className="flex justify-center mb-4">
+        <h1 className=" text-white text-5xl font-bold text-center mb-8 text-stroke">Pokedex</h1>
+        <div className=" flex justify-center mb-4 ">
           <input
             type="text"
             placeholder="Search Pokémon"
             value={searchQuery}
             onChange={handleSearch}
-            className="px-4 py-2 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className=" text-white w-96 px-4 py-2 bg-zinc-900 opacity-70 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500"
           />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className=" lg:pt-64 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {pokemon.map((p) => {
             const { main: cardColor, light: abilityColor, imbg: background } = getRandomColor();
             return (
@@ -173,7 +173,7 @@ const Pokedex = () => {
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
-              className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
@@ -184,7 +184,7 @@ const Pokedex = () => {
             <button
               onClick={nextPage}
               disabled={currentPage === totalPages}
-              className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex items-center px-4 py-2 bg-orange-500 text-white rounded-lg shadow-md hover:bg-orange-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               Next
               <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
