@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom CRUD Table</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .striped tbody tr:nth-child(odd) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body class="">
+    <div class="container mx-auto mt-10">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-bold">Custom CRUD Table</h1>
+            <button id="addRow" class="bg-blue-500 text-white px-4 py-2 rounded">
+                <i class="bi bi-plus-lg"></i> Add Row
+            </button>
+        </div>
+        <div class="flex mb-4">
+            <input type="text" id="searchInput" class="w-full px-4 py-2 border rounded" placeholder="Search...">
+        </div>
+        <table id="crudTable" class="min-w-full bg-white striped border">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2 border cursor-pointer" data-sort="name">Name <i class="bi bi-chevron-expand"></i></th>
+                    <th class="px-4 py-2 border cursor-pointer" data-sort="age">Age <i class="bi bi-chevron-expand"></i></th>
+                    <th class="px-4 py-2 border">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Table rows will be added here dynamically -->
+            </tbody>
+        </table>
+        <div id="pagination" class="mt-4 flex justify-center">
+            <!-- Pagination buttons will be added here dynamically -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="crud-table.js"></script>
+</body>
+</html>

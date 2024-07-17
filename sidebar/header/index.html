@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Sidebar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex">
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transition-width duration-300 z-50">
+        <button id="toggleBtn" class="p-4 text-white focus:outline-none">
+            <i class="bi bi-list text-xl"></i>
+        </button>
+        <ul class="list-none p-0">
+            <li class="p-4"><a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-house"></i><span class="ml-2 link-text">Home</span></a></li>
+            <li class="p-4 relative">
+                <a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-person"></i><span class="ml-2 link-text">Profile</span></a>
+                <ul class="dropdown hidden list-none p-0 mt-2 ml-8">
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">View Profile</a></li>
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">Edit Profile</a></li>
+                </ul>
+            </li>
+            <li class="p-4 relative">
+                <a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-gear"></i><span class="ml-2 link-text">Settings</span></a>
+                <ul class="dropdown hidden list-none p-0 mt-2 ml-8">
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">General</a></li>
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">Security</a></li>
+                </ul>
+            </li>
+            <li class="p-4"><a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-info-circle"></i><span class="ml-2 link-text">About</span></a></li>
+        </ul>
+    </div>
+    <div class="flex flex-col flex-grow">
+        <header id="header" class="fixed top-0 left-64 w-[calc(100%-16rem)] h-16 bg-gray-900 text-white flex items-center px-4 transition-all duration-300 z-40">
+            <h1 class="flex-grow">My Website</h1>
+            <div class="relative header-dropdown">
+                <button id="headerDropdownBtn" class="focus:outline-none">More <i class="bi bi-caret-down-fill"></i></button>
+                <ul id="headerDropdown" class="header-dropdown-menu hidden absolute right-0 mt-2 bg-gray-800 text-white list-none p-0 min-w-[150px]">
+                    <li class="border-b border-gray-700"><a href="#" class="block p-2 hover:bg-gray-700">Link 1</a></li>
+                    <li class="border-b border-gray-700"><a href="#" class="block p-2 hover:bg-gray-700">Link 2</a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-700">Link 3</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="flex-grow pt-16 pl-64 bg-gray-100 transition-all duration-300">
+            <div class="p-4">
+                <h2 class="text-2xl">Welcome to My Website</h2>
+                <p>Content goes here...</p>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
