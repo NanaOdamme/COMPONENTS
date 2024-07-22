@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahboard
+
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.5.0/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/sidebar/header/style.css">
+</head>
+<body class="flex bg-gray-200">
+    <div id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-gray-800 text-white transition-width duration-300 z-50">
+        <button id="toggleBtn" class="p-4 text-white focus:outline-none">
+            <i class="bi bi-list text-xl"></i>
+        </button>
+        <ul class="list-none p-0">
+            <li class="p-4"><a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-house"></i><span class="ml-2 link-text">Home</span></a></li>
+            <li class="p-4 relative">
+                <a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-person"></i><span class="ml-2 link-text">Profile</span></a>
+                <ul class="dropdown hidden list-none p-0 mt-2 ml-8">
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">View Profile</a></li>
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">Edit Profile</a></li>
+                </ul>
+            </li>
+            <li class="p-4 relative">
+                <a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-gear"></i><span class="ml-2 link-text">Settings</span></a>
+                <ul class="dropdown hidden list-none p-0 mt-2 ml-8">
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">General</a></li>
+                    <li class="p-2"><a href="#" class="text-white hover:bg-gray-700 block">Security</a></li>
+                </ul>
+            </li>
+            <li class="p-4"><a href="#" class="flex items-center text-white hover:bg-gray-700"><i class="bi bi-info-circle"></i><span class="ml-2 link-text">About</span></a></li>
+        </ul>
+    </div>
+    
+    <div class="flex flex-col w-full">
+        <header id="header" class="fixed top-0 left-64 w-[calc(100%-16rem)] h-16 bg-gray-900 text-white flex items-center px-4 transition-all duration-300 z-40">
+            <h1 class="flex-grow">My Website</h1>
+            <div class="relative header-dropdown">
+                <button id="headerDropdownBtn" class="focus:outline-none">More <i class="bi bi-caret-down-fill"></i></button>
+                <ul id="headerDropdown" class="header-dropdown-menu hidden absolute right-0 mt-2 bg-gray-800 text-white list-none p-0 min-w-[150px]">
+                    <li class="border-b border-gray-700"><a href="#" class="block p-2 hover:bg-gray-700">Link 1</a></li>
+                    <li class="border-b border-gray-700"><a href="#" class="block p-2 hover:bg-gray-700">Link 2</a></li>
+                    <li><a href="#" class="block p-2 hover:bg-gray-700">Link 3</a></li>
+                </ul>
+            </div>
+        </header>
+        <main class="p-4 transition-all duration-300 h-screen overflow-auto">
+            <div class="flex flex-col lg:flex-row md:flex-row justify-between gap-2">
+        <section class=" w-full mt-16   ">
+            <div class="card bg-indigo-400 h-56 m-1 mb-5 rounded shadow">
+               <h1 class="text-2xl text-white capitalize font-bold p-5">component</h1>
+            </div>
+            <div class=" grid grid-cols-1  lg:grid-cols-3 gap-2 m-1">
+                <div class="overflow-auto card bg-white h-20  rounded shadow">
+                    <h1 class="text-2xl text-black capitalize font-bold p-2">text</h1>
+                 </div>
+                 <div class="overflow-autocard bg-white h-20  rounded shadow">
+                    <h1 class="text-2xl text-black capitalize font-bold p-2">text</h1>
+                 </div>
+                 <div class="overflow-auto card bg-white h-20  rounded shadow">
+                    <h1 class="text-2xl text-black capitalize font-bold p-2">text</h1>
+                 </div>
+            </div>
+            <div class="section mb-5">
+                <h1 class="p-2 text-2xl font-bold">Header Here</h1>
+            <div class=" grid grid-cols-1  lg:grid-cols-3 gap-2 m-1">
+                <div class="overflow-auto card bg-white h-80  rounded shadow">
+                    <h1 class="text-2xl text-black capitalize font-bold p-2">component</h1>
+                 </div>
+                 <div class="overflow-autocard bg-white h-80  rounded shadow">
+                    <h1 class="text-2xl text-black capitalize font-bold p-2">component</h1>
+                 </div>
+                 <div class="overflow-auto card bg-white h-80  rounded shadow">
+                    <h1 class="text-2xl text-black capitalize font-bold p-2">component</h1>
+                 </div>
+            </div>
+        </div>
+        <div>
+            <div class="flex justify-between p-2 text-blue-600">
+            <h1 class="text-2xl">Header Here</h1>
+            <a href="#">See More <i class="bi bi-arrow-right"></i></a>
+        </div>
+            <div class="card bg-yellow-200 shadow-lg rounded w-full h-96">
+
+            </div>
+        </div>
+        </section>
+        <section class=" w-full lg:w-96 md:w-96 rounded shadow-lg bg-white mt-16">
+            <div class="">
+               <h1 class=" p-5">more components here</h1>
+            </div>
+        </section>
+    </div>
+</main>
+    </div>
+    <script src="/sidebar/header/script.js"></script>
+</body>
+</html>
