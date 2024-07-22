@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Animation with Star Particles</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; /* Dark background for better visibility of particles */
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgb(98, 0, 255); /* Initial color, will be overridden */
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); /* Star shape */
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('mousemove', function(event) {
+            createParticle(event.clientX, event.clientY);
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            // Randomize color
+            const colors = ['gold', 'red', 'blue', 'green', 'purple', 'pink', 'cyan'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.backgroundColor = randomColor;
+
+            // Randomize size
+            const size = Math.random() * 20 + 5; // Size between 5px and 25px
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            document.body.appendChild(particle);
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    </script>
+</body>
+</html>

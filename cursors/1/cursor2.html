@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Fireworks</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; /* Dark background for better visibility of particles */
+        }
+
+        .particle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                transform: translateY(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('mousemove', function(event) {
+            for (let i = 0; i < 10; i++) { // Create multiple particles per event
+                createParticle(event.clientX, event.clientY);
+            }
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            // Randomize color
+            const colors = ['gold', 'red', 'blue', 'green', 'purple', 'pink', 'cyan'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.backgroundColor = randomColor;
+
+            // Randomize size
+            const size = Math.random() * 10 + 5; // Size between 5px and 15px
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+
+            // Randomize velocity
+            const angle = Math.random() * 2 * Math.PI; // Random angle
+            const velocity = Math.random() * 5 + 2; // Random speed between 2 and 7
+            const vx = Math.cos(angle) * velocity;
+            const vy = Math.sin(angle) * velocity;
+
+            document.body.appendChild(particle);
+
+            particle.animate([
+                { transform: `translate(${vx * 10}px, ${vy * 10}px)` },
+                { opacity: 0 }
+            ], {
+                duration: 1000,
+                easing: 'ease-out',
+                fill: 'forwards'
+            });
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    </script>
+</body>
+</html>

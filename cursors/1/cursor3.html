@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Shooting Stars</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; 
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 20px;
+            border-radius: 10%;
+            pointer-events: none;
+            background: linear-gradient(45deg, transparent, rgb(81, 0, 255));
+            animation: fadeOut 3s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let lastX, lastY;
+        
+        document.addEventListener('mousemove', function(event) {
+            if (lastX === undefined || lastY === undefined) {
+                lastX = event.clientX;
+                lastY = event.clientY;
+                return;
+            }
+
+            const deltaX = event.clientX - lastX;
+            const deltaY = event.clientY - lastY;
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+            for (let i = 0; i < distance / 5; i++) {
+                const offsetX = (deltaX / distance) * i * 5;
+                const offsetY = (deltaY / distance) * i * 5;
+                createParticle(lastX + offsetX, lastY + offsetY, deltaX, deltaY);
+            }
+
+            lastX = event.clientX;
+            lastY = event.clientY;
+        });
+
+        function createParticle(x, y, deltaX, deltaY) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            // Calculate angle for the shooting star direction
+            const angle = Math.atan2(deltaY, deltaX) * 180 / Math.PI;
+            particle.style.transform = `rotate(${angle}deg)`;
+
+            document.body.appendChild(particle);
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    </script>
+</body>
+</html>

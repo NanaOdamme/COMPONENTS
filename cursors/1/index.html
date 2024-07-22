@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Animation with Gold Particles</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #000; /* Dark background for better visibility of particles */
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: gold; /* Gold color */
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+
+        @keyframes fadeOut {
+            to {
+                transform: scale(0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.addEventListener('mousemove', function(event) {
+            createParticle(event.clientX, event.clientY);
+        });
+
+        function createParticle(x, y) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+
+            document.body.appendChild(particle);
+
+            particle.addEventListener('animationend', () => {
+                particle.remove();
+            });
+        }
+    </script>
+</body>
+</html>
