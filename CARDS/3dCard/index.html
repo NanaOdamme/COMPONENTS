@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Card</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+       
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #2b2626;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .card {
+            width: 200px;
+            height: 300px;
+            display: flex;
+            border-radius: 20px;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 10px;
+            perspective: 1500px;
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.9s, box-shadow 0.9s;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+
+        .wrapper {
+            position: absolute;
+            width: 100%;
+            z-index: 1;
+            border-radius: 20px;
+        }
+
+        .wrapper::before,
+        .wrapper::after {
+            content: '';
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: all 0.9s;
+            left: 0;
+        }
+
+        .wrapper::before {
+            top: 0;
+        }
+
+        .wrapper::after {
+            bottom: 0;
+            opacity: 1;
+            border-radius: 20px;
+            background-image: linear-gradient(to top, transparent 46%, rgba(254, 254, 255, 0), rgba(12, 78, 84, 0), rgba(11, 147, 165, 0.5) 97%);
+        }
+
+        .title {
+            width: 90%;
+            transition: transform 0.9s;
+            z-index: 2;
+            margin-bottom: 15px;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .title h1 {
+            color: hsl(194, 75%, 32%);
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5), -1px -1px 2px rgba(255, 255, 255, 0.6);
+            font-weight: 700;
+        }
+
+        .title p {
+            color: white;
+            font-size: 1rem;
+            margin-top: -10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .character {
+            width: 120%;
+            opacity: 0;
+            position: absolute;
+            z-index: -1;
+            transition: all 0.9s;
+        }
+
+        .card:hover .wrapper {
+            transform: perspective(400px) translateY(-5%) rotateX(25deg) translateZ(0);
+            box-shadow: 0 10px 20px rgba(3, 255, 255, 0.712);
+        }
+
+        .card:hover .title {
+            transform: translate3d(0%, 0px, 100px);
+            
+        }
+
+        .card:hover .wrapper::after,
+        .wrapper::before {
+            opacity: 1;
+        }
+
+        .card:hover .wrapper::after {
+            height: 150px;
+        }
+
+        .card:hover .wrapper::before {
+            opacity: 1;
+        }
+
+        .card:hover .character {
+            opacity: 1;
+            transform: translate3d(0%, -30%, -100px);
+            z-index: 3;
+        }
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <div class="wrapper">
+            <img class="cover-image" src="bg (2).png" alt="">
+        </div>
+        <div class="title">
+            <h1>The Belle Royale</h1>
+            <p>Aerona Stiles</p>
+        </div>
+        <img class="character" src="main.png" alt="">
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        let isRotating = false;
+
+        card.addEventListener('mousedown', (e) => {
+            if (window.getComputedStyle(card.querySelector('.character')).opacity === '1') {
+                card.classList.add('clicked');
+                isRotating = true;
+            }
+        });
+
+        card.addEventListener('mouseup', () => {
+            card.classList.remove('clicked');
+            isRotating = false;
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (isRotating) {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 20;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 20;
+                card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating Cube</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #0d0323;
+            margin: 0;
+        }
+
+        .scene {
+            width: 200px;
+            height: 200px;
+            perspective: 600px;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 10s infinite linear;
+        }
+
+        .cube__face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+        }
+
+        .cube__face--front {
+            transform: translateZ(100px);
+            background-image: url('roses.jpeg');
+        }
+
+        .cube__face--back {
+            transform: rotateY(180deg) translateZ(100px);
+            background-image: url('tulips.jpeg');
+        }
+
+        .cube__face--right {
+            transform: rotateY(90deg) translateZ(100px);
+            background-image: url('sun.jpeg');
+        }
+
+        .cube__face--left {
+            transform: rotateY(-90deg) translateZ(100px);
+            background-image: url('daisy.jpeg');
+        }
+
+        .cube__face--top {
+            transform: rotateX(90deg) translateZ(100px);
+            background-image: url('forget-me-not.jpeg');
+        }
+
+        .cube__face--bottom {
+            transform: rotateX(-90deg) translateZ(100px);
+            background-image: url('hibiscus.jpeg');
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 10;
+        }
+
+        .popup-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="cube">
+            <div class="cube__face cube__face--front" onclick="showPopup('Rose', 'Roses are one of the most popular flowers in the world, known for their beauty and fragrance.')"></div>
+            <div class="cube__face cube__face--back" onclick="showPopup('Tulip', 'Tulips are spring-blooming perennials that grow from bulbs and are known for their bright, cheerful colors.')"></div>
+            <div class="cube__face cube__face--right" onclick="showPopup('Sunflower', 'Sunflowers are known for their large, bright yellow blooms and their ability to follow the sun across the sky.')"></div>
+            <div class="cube__face cube__face--left" onclick="showPopup('Daisy', 'Daisies are simple yet beautiful flowers, often symbolizing purity and innocence.')"></div>
+            <div class="cube__face cube__face--top" onclick="showPopup('Forget-me-not', 'Forget-me-nots are small, delicate flowers that symbolize true love and memories.')"></div>
+            <div class="cube__face cube__face--bottom" onclick="showPopup('Hibiscus', 'Hibiscus flowers are known for their large, colorful blooms and are often associated with tropical regions.')"></div>
+        </div>
+    </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <div class="popup-close" onclick="hidePopup()">&times;</div>
+            <h2 id="popup-title"></h2>
+            <p id="popup-description"></p>
+        </div>
+    </div>
+
+    <script>
+        function showPopup(title, description) {
+            document.getElementById('popup-title').innerText = title;
+            document.getElementById('popup-description').innerText = description;
+            document.getElementById('popup').style.display = 'flex';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
