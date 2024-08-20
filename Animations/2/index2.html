@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animation Example</title>
+  <style>
+    :root{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: rgb(48, 47, 51);
+    }
+    .element {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        border-radius: 50%;
+        transition: all 0.5s;
+        animation: custom-ease 3s cubic-bezier(0.42, 0, 0.58, 1) infinite;
+      }
+      
+
+    @keyframes custom-ease {
+        0% {
+            transform: scale(1) rotate(0deg);
+            opacity: 1;
+            background-color: rgba(248, 161, 161, 0.555);
+          }
+          25% {
+            transform: scale(1.5) rotate(90deg);
+            opacity: 0.75;
+            background-color: rgb(255, 119, 119);
+          }
+          50% {
+            transform: scale(1) rotate(180deg);
+            opacity: 0.5;
+            background-color: rgb(243, 78, 78);
+          }
+          75% {
+            transform: scale(0.5) rotate(270deg);
+            opacity: 0.75;
+            background-color: rgb(245, 38, 38);
+          }
+          100% {
+            transform: scale(1) rotate(360deg);
+            opacity: 1;
+            background-color: rgb(255, 39, 39);
+          }
+    }
+  </style>
+</head>
+<body>
+  <div class="element"></div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animation Example</title>
+  <style>
+    :root{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: rgb(48, 47, 51);
+    }
+    @keyframes complex-transform {
+      0% {
+        transform: rotate(0deg) scale(1) translateX(0);
+        background-color: rgb(181, 181, 211);
+      }
+      50% {
+        transform: rotate(180deg) scale(1.5) translateX(50px);
+        background-color: rgb(181, 211, 181);
+      }
+      100% {
+        transform: rotate(360deg) scale(2) translateX(0);
+        background-color: rgb(211, 181, 181);
+      }
+    }
+    
+    .transformed-element {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(181, 181, 211);
+      border-radius: 50%;
+      
+      animation: complex-transform 5s ease-in-out infinite;
+    }
+    
+    
+  </style>
+</head>
+<body>
+  <div class="transformed-element"></div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text with Smoke Effect</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      background-color: #000000;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Video background */
+    video {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Text styling */
+    h1 {
+      font-size: 5em;
+      color: #c7c7c7;
+      text-align: center;
+      letter-spacing: 0.2em;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 span {
+      display: inline-block;
+      animation: animate 5s linear forwards;
+      opacity: 0;
+    }
+
+    @keyframes animate {
+      0% {
+        opacity: 0;
+        transform: rotateY(90deg);
+        filter: blur(10px);
+      }
+      100% {
+        opacity: 1;
+        transform: rotateY(0deg);
+        filter: blur(0px);
+      }
+    }
+
+    /* Smoke effect */
+    .smoke-container {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .smoke {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.053);
+      border-radius: 50%;
+      opacity: 0;
+      animation: smoke-animation 10s infinite;
+    }
+
+    @keyframes smoke-animation {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translate(20vw, -20vh) scale(1.5);
+        opacity: 0.3;
+      }
+      100% {
+        transform: translate(100vw, -100vh) scale(2);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video src="video.mp4" autoplay muted loop></video>
+  <h1>
+    <span>S</span>
+    <span>H</span>
+    <span>A</span>
+    <span>D</span>
+    <span>O</span>
+    <span>W</span> <br />
+    <span>M</span>
+    <span>O</span>
+    <span>O</span>
+    <span>N</span>
+  </h1>
+  <div class="smoke-container">
+    <!-- Smoke particles will be added dynamically here -->
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.smoke-container');
+      const numParticles = 1000; // Number of smoke particles
+
+      for (let i = 0; i < numParticles; i++) {
+        const smoke = document.createElement('div');
+        smoke.classList.add('smoke');
+
+        // Set random position, size, and animation delay for each smoke particle
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        const size = Math.random() * 20 + 90;
+        const delay = Math.random() * 80;
+
+        smoke.style.left = `${x}px`;
+        smoke.style.top = `${y}px`;
+        smoke.style.width = `${size}px`;
+        smoke.style.height = `${size}px`;
+        smoke.style.animationDelay = `-${delay}s`;
+
+        container.appendChild(smoke);
+      }
+    });
+  </script>
+</body>
+</html>

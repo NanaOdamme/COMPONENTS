@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text with Smoke Effect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <style>
+    body {
+        height: 100vh;
+        margin: 0;
+        background-color: #000000;
+        overflow: hidden;
+        display: flex;
+       
+        justify-content: center;
+        align-items: center;
+      }
+     /* Container for centering text */
+     .wrapper{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      } 
+       /* Video background */
+    video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+     
+     .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center; 
+      }
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+    .sign {
+        position: relative;
+        font-size: 5em;
+        color: transparent; 
+        text-align: center;
+        letter-spacing: 0.2em;
+        font-family: "Varela Round", sans-serif;
+        margin: 0 0.1em;
+        z-index: 1;
+        animation: neon-glow 1.5s ease-in-out infinite alternate;
+        -webkit-text-stroke: 2px #ffffff;
+        text-shadow: 0 0 50px #ea00ff, 0 0 10px #ff00fb, 0 0 10px #741292, 0 0 20px #ffccff, 0 0 30px #ff00cc;
+    }
+
+    .second-text {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    @keyframes neon-glow {
+        from {
+          text-shadow: 0 0 5px #ea00ff, 0 0 10px #ff00fb, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 75px #ff00ff;
+        }
+        to {
+          text-shadow: 0 0 10px #ff00a6, 0 0 20px #ff00ff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 50px #ff00ff, 0 0 75px #ff00ff, 0 0 100px #ff00ff;
+        }
+    }
+
+    #one {
+      animation: flicker-n_2 10s infinite forwards;
+      animation: color-change 10s infinite forwards;
+    }
+
+    #two {
+      
+      animation: flicker-e 10s infinite linear;
+    }
+
+    #three {
+      animation: color-change 10s infinite forwards;
+    }
+
+    #ten {
+      position: relative;
+      font-size: 5em;
+      color: #ffffff; /* Retain the white color */
+      text-align: center;
+      letter-spacing: 0.2em;
+      font-family: "Varela Round", sans-serif;
+      margin: 0 0.1em;
+      z-index: 1;
+      animation: neon-glow 1.5s ease-in-out infinite alternate;
+    }
+
+    #ten::before,
+    #ten::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 5px;
+      bottom: 0;
+      width: 100%;
+      height: 200%;
+      border-radius: 50%;
+      filter: blur(5px);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    #ten::before {
+      border-radius: 50%;
+      animation: color-change 10s infinite forwards;
+      background-color: #e03aef;
+      border-radius: 50%;
+      filter: blur(2em);
+      opacity: 0.5;
+    }
+
+    #ten::after {
+      animation: color-change 10s infinite forwards;
+      background: radial-gradient(#441b3a 30%, #ee2eff, #d61ef7);
+      transform: perspective(100px) rotateX(80deg) translate(0);
+      filter: blur(5px);
+      animation: change-op 10s infinite linear;
+    }
+
+    #four {
+      animation: flicker-n 10s infinite forwards;
+    }
+
+    #five {
+      animation: flicker-g 10s infinite forwards;
+    }
+
+    #six {
+      animation: flicker-g 10s infinite forwards;
+      animation: color-change 10s infinite forwards;
+    }
+
+    #seven {
+      animation: flicker-s 10s infinite forwards;
+    }
+
+    #eight {
+      animation: flicker-n 10s infinite forwards;
+    }
+
+    #nine {
+      animation: flicker-g 10s infinite forwards;
+      animation: color-change 10s infinite forwards;
+    }
+
+    #eleven {
+      animation: flicker-s 10s infinite forwards;
+    }
+
+    #twelve {
+      animation: flicker-n_2 10s infinite forwards;
+    }
+
+    @keyframes flicker-n_2 {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.3;
+      }
+    }
+
+    @keyframes flicker-e {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.3;
+      }
+    }
+
+    @keyframes flicker-n {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes flicker-g {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes flicker-s {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 1;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 0.5;
+      }
+    }
+
+    @keyframes color-change {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        -webkit-text-stroke-color: #ffffff;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        -webkit-text-stroke-color: #ff00ff;
+        
+         
+      }
+    }
+
+    @keyframes change-op {
+      0%, 19.999%, 22%, 62.999%, 64%, 64.999%, 70%, 100% {
+        opacity: 0.5;
+      }
+      20%, 21.999%, 63%, 63.999%, 65%, 69.999% {
+        opacity: 1;
+      }
+    }
+
+      /* Smoke effect */
+      .smoke-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .smoke {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: rgba(255, 255, 255, 0.053);
+        border-radius: 50%;
+        opacity: 0;
+        animation: smoke-animation 10s infinite;
+      }
+
+      @keyframes smoke-animation {
+        0% {
+          transform: translate(0, 0) scale(1);
+          opacity: 0.2;
+        }
+        50% {
+          transform: translate(20vw, -20vh) scale(1.5);
+          opacity: 0.3;
+        }
+        100% {
+          transform: translate(100vw, -100vh) scale(2);
+          opacity: 1;
+        }
+      }
+  </style>
+</head>
+<body>
+    
+
+    <div class="wrapper">
+  <div class="container">
+    <div class="sign" id="one">A</div>
+    <div class="sign" id="two">M</div>
+    <div class="sign" id="three">E</div>
+    <div class="sign" id="four">R</div>
+    <div class="sign" id="five">I</div>
+    <div class="sign" id="six">C</div>
+    <div class="sign" id="seven">A</div>
+    <div class="sign" id="eight">N</div>
+  </div>
+
+  <div class="second-text">
+    <div class="sign" id="nine">G</div>
+    <div class="sign" id="ten">O</div>
+    <div class="sign" id="eleven">D</div>
+    <div class="sign" id="twelve">S</div>
+  </div>
+
+  <div class="smoke-container">
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+    <div class="smoke"></div>
+  </div>
+</div>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.smoke-container');
+      const numParticles = 1000; // Number of smoke particles
+
+      for (let i = 0; i < numParticles; i++) {
+        const smoke = document.createElement('div');
+        smoke.classList.add('smoke');
+
+        // Set random position, size, and animation delay for each smoke particle
+        const x = Math.random() * window.innerWidth;
+        const y = Math.random() * window.innerHeight;
+        const size = Math.random() * 20 + 90;
+        const delay = Math.random() * 80;
+
+        smoke.style.left = `${x}px`;
+        smoke.style.top = `${y}px`;
+        smoke.style.width = `${size}px`;
+        smoke.style.height = `${size}px`;
+        smoke.style.animationDelay = `-${delay}s`;
+
+        container.appendChild(smoke);
+      }
+    });
+  </script>
+</body>
+</html>
