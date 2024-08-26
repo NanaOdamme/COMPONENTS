@@ -16,7 +16,7 @@ const Home = () => {
 
     return (
         <div>
-            <div className='hero bg-green-400 h-80 grid grid-cols-2 gap-2 mx-auto'>
+            <div className='hero bg-green-400 h-80 grid grid-cols-1 lg:grid-cols-2 gap-2 mx-auto'>
                 <div className='flex flex-col text-white justify-center align-center mx-auto'>
                     <h4 className='text-xl mb-5'>Ends: Sept 26, 07:59 (GMT0) </h4>
                     <h1 className='mt-2 font-bold text-3xl'>
@@ -27,7 +27,7 @@ const Home = () => {
                     </h1>
                 </div>
 
-                <div className='slide-container relative overflow-hidden'>
+                <div className='hidden cards lg:block slide-container relative overflow-hidden'>
                     <div className="slider-cards flex transition-transform duration-500 ease-in-out"
                         style={{ transform: `translateX(-${currentSlide * 100}%)` }}
                     >
